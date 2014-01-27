@@ -1,0 +1,44 @@
+<?php
+
+namespace ms07\SubversionBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * @MongoDB\Document
+ */
+class Author{
+	/**
+	 * @MongoDB\Id(strategy="auto")
+	 */
+	protected $id;
+
+	/**
+	 * @var string
+	 *
+	 * @MongoDB\Field(type="string")
+	 */
+	protected $internal;
+
+	/**
+	 * @return mixed
+	 */
+	public function getId(){
+		return $this->id;
+	}
+
+	/**
+	 * @param mixed $internal
+	 */
+	public function setInternal($internal){
+		$this->internal = $internal;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getInternal(){
+		return $this->internal;
+	}
+
+}

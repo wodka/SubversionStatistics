@@ -2,6 +2,7 @@
 
 namespace ms07\SubversionBundle\Document;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
@@ -54,6 +55,36 @@ class Repository{
 	 * @MongoDB\Field(type="boolean")
 	 */
 	protected $validated;
+
+	/**
+	 * @var ArrayCollection
+	 *
+	 * @MongoDB\ReferenceMany(targetDocument="Revision", mappedBy="repository")
+	 */
+	protected $revisionList;
+
+	/**
+	 * @var ArrayCollection
+	 *
+	 * @MongoDB\ReferenceMany(targetDocument="Author", mappedBy="repository")
+	 */
+	protected $authorList;
+
+	/**
+	 * @var Revision
+	 *
+	 * @MongoDB\ReferenceOne(
+	 *      targetDocument="Revision",
+	 *      mappedBy="repository",
+	 *      sort={"number"="desc"}
+	 * )
+	 */
+	protected $lastRevision;
+
+	public function __construct(){
+		$this->revisionList = new ArrayCollection();
+		$this->authorList = new ArrayCollection();
+	}
 
 	/**
 	 * @return mixed
@@ -144,5 +175,47 @@ class Repository{
 	 */
 	public function getName(){
 		return $this->name;
+	}
+
+	/**
+	 * @param Revision $lastRevision
+	 */
+	public function setLastRevision($lastRevision){
+		$this->lastRevision = $lastRevision;
+	}
+
+	/**
+	 * @return Revision
+	 */
+	public function getLastRevision(){
+		return $this->lastRevision;
+	}
+
+	/**
+	 * @param \Doctrine\Common\Collections\ArrayCollection $revisionList
+	 */
+	public function setRevisionList($revisionList){
+		$this->revisionList = $revisionList;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\ArrayCollection
+	 */
+	public function getRevisionList(){
+		return $this->revisionList;
+	}
+
+	/**
+	 * @param \Doctrine\Common\Collections\ArrayCollection $authorList
+	 */
+	public function setAuthorList($authorList){
+		$this->authorList = $authorList;
+	}
+
+	/**
+	 * @return \Doctrine\Common\Collections\ArrayCollection
+	 */
+	public function getAuthorList(){
+		return $this->authorList;
 	}
 }

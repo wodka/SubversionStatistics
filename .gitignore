@@ -9,4 +9,5 @@
 /vendor/
 /bin/
 /composer.phar
-SubversionStatistics.iml
+/composer.lock
+/SubversionStatistics.iml

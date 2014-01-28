@@ -24,14 +24,14 @@ class Revision{
 	/**
 	 * @var Author
 	 *
-	 * @MongoDB\Field(type="string")
+	 * @MongoDB\ReferenceOne(targetDocument="Author")
 	 */
 	protected $author;
 
 	/**
 	 * @var \DateTime
 	 *
-	 * @MongoDB\Field(type="timestamp")
+	 * @MongoDB\Field(type="date")
 	 */
 	protected $created;
 
@@ -41,6 +41,13 @@ class Revision{
 	 * @MongoDB\ReferenceMany(targetDocument="Path", mappedBy="revision")
 	 */
 	protected $pathList;
+
+	/**
+	 * @var Repository
+	 *
+	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList")
+	 */
+	private $repository;
 
 	public function __construct(){
 		$this->pathList = new ArrayCollection();
@@ -107,5 +114,19 @@ class Revision{
 	 */
 	public function getPathList(){
 		return $this->pathList;
+	}
+
+	/**
+	 * @param \ms07\SubversionBundle\Document\Repository $repository
+	 */
+	public function setRepository($repository){
+		$this->repository = $repository;
+	}
+
+	/**
+	 * @return \ms07\SubversionBundle\Document\Repository
+	 */
+	public function getRepository(){
+		return $this->repository;
 	}
 }

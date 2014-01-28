@@ -624,12 +624,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/mongodb-odm.git",
-                "reference": "661a3b3a00a2f6e3c8502f4d9c5f93b7730fff03"
+                "reference": "d5987070c5fd09e070530ae0fda9d4b025af75b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/661a3b3a00a2f6e3c8502f4d9c5f93b7730fff03",
-                "reference": "661a3b3a00a2f6e3c8502f4d9c5f93b7730fff03",
+                "url": "https://api.github.com/repos/doctrine/mongodb-odm/zipball/d5987070c5fd09e070530ae0fda9d4b025af75b2",
+                "reference": "d5987070c5fd09e070530ae0fda9d4b025af75b2",
                 "shasum": ""
             },
             "require": {
@@ -694,7 +694,7 @@
                 "odm",
                 "persistence"
             ],
-            "time": "2014-01-21 23:30:32"
+            "time": "2014-01-28 00:19:15"
         },
         {
             "name": "doctrine/mongodb-odm-bundle",
@@ -1560,17 +1560,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "target-dir": "Symfony/Bundle/SwiftmailerBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/SwiftmailerBundle.git",
-                "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93"
+                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/f5e5d12629c26a835c7aa1d74e2e041486b92d93",
-                "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93",
+                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
+                "reference": "fcefa9dbd5a1ed20547b0f8a2afd5ad6837ea321",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1611,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2013-08-22 13:32:58"
+            "time": "2013-11-21 12:29:01"
         },
         {
             "name": "symfony/symfony",

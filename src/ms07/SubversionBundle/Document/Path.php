@@ -21,6 +21,13 @@ class Path{
 	protected $revision;
 
 	/**
+	 * @var Repository
+	 *
+	 * @MongoDB\ReferenceOne(targetDocument="Repository")
+	 */
+	protected $repository;
+
+	/**
 	 * @var string
 	 *
 	 * @MongoDB\Field(type="string")
@@ -32,14 +39,21 @@ class Path{
 	 *
 	 * @MongoDB\Field(type="int")
 	 */
-	protected $stat_insertion;
+	protected $stat_insert;
 
 	/**
 	 * @var int
 	 *
 	 * @MongoDB\Field(type="int")
 	 */
-	protected $stat_deletion;
+	protected $stat_delete;
+
+	/**
+	 * @var int
+	 *
+	 * @MongoDB\Field(type="int")
+	 */
+	protected $stat_change;
 
 	/**
 	 * @return mixed
@@ -77,30 +91,58 @@ class Path{
 	}
 
 	/**
-	 * @param int $stat_deletion
+	 * @param int $stat_change
 	 */
-	public function setStatDeletion($stat_deletion){
-		$this->stat_deletion = $stat_deletion;
+	public function setStatChange($stat_change){
+		$this->stat_change = $stat_change;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getStatDeletion(){
-		return $this->stat_deletion;
+	public function getStatChange(){
+		return $this->stat_change;
 	}
 
 	/**
-	 * @param int $stat_insertion
+	 * @param int $stat_delete
 	 */
-	public function setStatInsertion($stat_insertion){
-		$this->stat_insertion = $stat_insertion;
+	public function setStatDelete($stat_delete){
+		$this->stat_delete = $stat_delete;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getStatInsertion(){
-		return $this->stat_insertion;
+	public function getStatDelete(){
+		return $this->stat_delete;
+	}
+
+	/**
+	 * @param int $stat_insert
+	 */
+	public function setStatInsert($stat_insert){
+		$this->stat_insert = $stat_insert;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getStatInsert(){
+		return $this->stat_insert;
+	}
+
+	/**
+	 * @param \ms07\SubversionBundle\Document\Repository $repository
+	 */
+	public function setRepository($repository){
+		$this->repository = $repository;
+	}
+
+	/**
+	 * @return \ms07\SubversionBundle\Document\Repository
+	 */
+	public function getRepository(){
+		return $this->repository;
 	}
 }

@@ -21,6 +21,13 @@ class Author{
 	protected $internal;
 
 	/**
+	 * @var Repository
+	 *
+	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList")
+	 */
+	protected $repository;
+
+	/**
 	 * @return mixed
 	 */
 	public function getId(){
@@ -41,4 +48,17 @@ class Author{
 		return $this->internal;
 	}
 
+	/**
+	 * @param \ms07\SubversionBundle\Document\Repository $repository
+	 */
+	public function setRepository($repository){
+		$this->repository = $repository;
+	}
+
+	/**
+	 * @return \ms07\SubversionBundle\Document\Repository
+	 */
+	public function getRepository(){
+		return $this->repository;
+	}
 }

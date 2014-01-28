@@ -14,6 +14,13 @@ class Repository{
 	protected $id;
 
 	/**
+	 * @var string
+	 *
+	 * @MongoDB\Field(type="string")
+	 */
+	protected $name;
+
+	/**
 	 * @var Company
 	 *
 	 * @MongoDB\ReferenceOne(targetDocument="Company", inversedBy="repositoryList")
@@ -40,6 +47,13 @@ class Repository{
 	 * @MongoDB\Field(type="string")
 	 */
 	protected $password;
+
+	/**
+	 * @var bool
+	 *
+	 * @MongoDB\Field(type="boolean")
+	 */
+	protected $validated;
 
 	/**
 	 * @return mixed
@@ -104,4 +118,31 @@ class Repository{
 		return $this->user;
 	}
 
+	/**
+	 * @param boolean $validated
+	 */
+	public function setValidated($validated){
+		$this->validated = $validated;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getValidated(){
+		return $this->validated;
+	}
+
+	/**
+	 * @param string $name
+	 */
+	public function setName($name){
+		$this->name = $name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getName(){
+		return $this->name;
+	}
 }

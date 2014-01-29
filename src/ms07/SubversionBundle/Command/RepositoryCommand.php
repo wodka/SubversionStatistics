@@ -19,6 +19,7 @@ class RepositoryCommand extends ContainerAwareCommand{
 		$this->setName('subversion:repository')
 			->setDescription("fetch repository information")
 			->addOption('info', null, InputOption::VALUE_NONE, "if set then only display information about the repository")
+			->addOption('count', null, InputOption::VALUE_OPTIONAL, "amount of revisions to parse")
 			->addArgument('id', InputArgument::REQUIRED, "repository id - 'all' to process all entries");
 	}
 
@@ -54,6 +55,9 @@ class RepositoryCommand extends ContainerAwareCommand{
 		}
 
 		$info = $this->getInfo($repository);
+		$count = $input->getOption('count')?:1;
+
+		ini_set('memory_limit', '1024M');
 
 		if($input->getOption("info")){
 
@@ -74,7 +78,7 @@ class RepositoryCommand extends ContainerAwareCommand{
 		 */
 		$cursor = $mongo->getRepository('SubversionBundle:Revision')
 			->createQueryBuilder()
-			->field('repository.$id')->equals(new \MongoId($repository->getId()))
+			->field('repository')->equals(new \MongoId($repository->getId()))
 			->sort('number', 'DESC')
 			->getQuery()
 			->execute();
@@ -94,12 +98,17 @@ class RepositoryCommand extends ContainerAwareCommand{
 			return;
 		}
 
-		for($current = $first; $current<$first+100; $current++){
+		for($current = $first; $current<$first+$count; $current++){
+			if($info['revision']<$current){
+				$output->writeln("reached end");
+				return;
+			}
+
 			$output->writeln("working on revision <info>{$current}</info>");
 			$this->buildRevision($repository, $current);
-		}
 
-		$mongo->flush();
+			$mongo->flush();
+		}
 	}
 
 	/**

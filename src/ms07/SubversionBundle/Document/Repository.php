@@ -66,7 +66,7 @@ class Repository{
 	/**
 	 * @var ArrayCollection
 	 *
-	 * @MongoDB\ReferenceMany(targetDocument="Author", mappedBy="repository")
+	 * @MongoDB\ReferenceMany(targetDocument="Author", mappedBy="repository", simple=true)
 	 */
 	protected $authorList;
 
@@ -76,7 +76,8 @@ class Repository{
 	 * @MongoDB\ReferenceOne(
 	 *      targetDocument="Revision",
 	 *      mappedBy="repository",
-	 *      sort={"number"="desc"}
+	 *      sort={"number"="desc"},
+	 * 		simple=true
 	 * )
 	 */
 	protected $lastRevision;

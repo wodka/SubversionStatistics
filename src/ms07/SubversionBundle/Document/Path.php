@@ -16,14 +16,14 @@ class Path{
 	/**
 	 * @var Revision
 	 *
-	 * @MongoDB\ReferenceOne(targetDocument="Revision", inversedBy="pathList")
+	 * @MongoDB\ReferenceOne(targetDocument="Revision", inversedBy="pathList", simple=true)
 	 */
 	protected $revision;
 
 	/**
 	 * @var Repository
 	 *
-	 * @MongoDB\ReferenceOne(targetDocument="Repository")
+	 * @MongoDB\ReferenceOne(targetDocument="Repository", simple=true)
 	 */
 	protected $repository;
 

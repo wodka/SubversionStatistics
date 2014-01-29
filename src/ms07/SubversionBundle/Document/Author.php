@@ -23,7 +23,7 @@ class Author{
 	/**
 	 * @var Repository
 	 *
-	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList")
+	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList", simple=true)
 	 */
 	protected $repository;
 

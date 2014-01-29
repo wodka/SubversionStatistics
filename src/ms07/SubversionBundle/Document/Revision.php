@@ -24,7 +24,7 @@ class Revision{
 	/**
 	 * @var Author
 	 *
-	 * @MongoDB\ReferenceOne(targetDocument="Author")
+	 * @MongoDB\ReferenceOne(targetDocument="Author", simple=true)
 	 */
 	protected $author;
 
@@ -45,7 +45,7 @@ class Revision{
 	/**
 	 * @var Repository
 	 *
-	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList")
+	 * @MongoDB\ReferenceOne(targetDocument="Repository", inversedBy="revisionList", simple=true)
 	 */
 	private $repository;
 
